@@ -4,8 +4,8 @@ import { Product } from '../product.model';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/shared/notification.service';
-import { CartService } from 'src/app/services/cart.service';
+import { NotificationService } from '../../shared/notification.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-list',
