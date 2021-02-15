@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { CartComponent } from './cart/cart.component';
 import { AuthGuard } from './guards/auth.guard';
-// import { AddProductComponent } from './products/add-product/add-product.component';
-// import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
 
