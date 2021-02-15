@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-10">
+    <form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+      <h4>{{urlId==="new"? 'Add Product': 'Edit Product'}}</h4>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="price">Title</label>
+            <input type="text" id="title" class="form-control" formControlName="title">
+            <span class="help-block" *ngIf="!form.get('title').valid && form.get('title').touched">Please Enter Title</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" id="price" class="form-control" formControlName="price">
+            <span class="help-block" *ngIf="!form.get('price').valid && form.get('price').touched">Please Enter Price</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input type="text" id="image" class="form-control" formControlName="image" #image>
+            <span class="help-block" *ngIf="!form.get('image').valid && form.get('image').touched">Please Enter Image</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <img [src]="image.value" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" id="description" class="form-control" rows="6" formControlName="description"></textarea>
+            <span class="help-block" *ngIf="!form.get('description').valid && form.get('description').touched">Please Enter Description</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" id="category" class="form-control" rows="6" formControlName="category">
+            <span class="help-block" *ngIf="!form.get('category').valid && form.get('category').touched">Please Enter Category</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-success" [disabled]="form.invalid">Save</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 10px;" routerLink="/products">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

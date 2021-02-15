@@ -1,0 +1,63 @@
+<div *ngIf="isLoading" class="spinner">
+  <app-spinner></app-spinner>
+</div>
+<div class="float-left" *ngIf="!isLoading">
+  <button class="btn btn-success" routerLink="/products/new">+ Add Product</button>
+</div>
+<div class="float-right" *ngIf="!isLoading">
+  <form class="searchButton" style="margin:auto;max-width:300px">
+    <input #searchBox type="text" placeholder="Search" name="search" [(ngModel)]="searchedKeyword">
+    <button type="button"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+<br>
+<br>
+<div *ngIf="!isLoading">
+  <div class="float-left">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <table class="table table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th style="width: 30%;">Actions<i class="fa fa-cogs"></i></th>
+    </tr>
+    <tr *ngFor = "let product of allProducts | filter: searchedKeyword| paginate: { itemsPerPage: 2, currentPage: p }">
+      <td>
+        {{product.id}}
+      </td>
+      <td>
+        {{product.title}}
+      </td>
+      <td>
+        {{product.category}}
+      </td>
+      <td>
+        {{product.price}}
+      </td>
+      <td>
+        {{product.description}}
+      </td>
+      <td>
+        <img [src]="product.image" alt="{{product.title}}" class="img-responsive">
+      </td>
+      <div class="container">
+      <td>
+        <tr>
+          <button type="button" class="btn btn-outline-dark"  (click)="onEdit(product)">Edit</button>
+          <button type="button" style="margin-left: 10px;" class="btn btn-outline-danger" (click)="onDelete(product.id)">Delete</button><br>
+        </tr>
+        <hr>
+        <tr>
+          <button type="button" class="btn btn-outline-primary" (click)="onAddCart(product)">Add to Cart</button>
+        </tr>
+      </td>
+    </div>
+    </tr>
+  </table>
+</div>
+
