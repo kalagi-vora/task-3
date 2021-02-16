@@ -87,6 +87,7 @@ export class CartComponent implements OnInit,OnDestroy {
       }
       else{
         this.cartService.addCartItem(value).subscribe();
+        this.notifyService.showSuccess("Item Added Successfully", "");
       }
       this.editMode = false;
       formData.reset();
