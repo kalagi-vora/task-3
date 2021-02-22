@@ -61,7 +61,7 @@ export class AddProductComponent implements OnInit {
   public onSubmit(formData: Product): void{
     if(this.urlId==="new")
     {
-      this.productService.addProduct(formData.title, formData.price, formData.description, formData.image, formData.category).subscribe(response =>{
+      this.productService.addProduct(formData).subscribe(response =>{
         console.log("created record is: " +JSON.stringify(response));
       });
       this.notifyService.showSuccess("Product added Successfully", "Yayy!!!");

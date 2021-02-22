@@ -26,8 +26,8 @@ export class ProductService{
      );
   }
 
-  public addProduct(title:string, price:number, description:string, image:string, category:string): Observable<Product>{
-    const productIs: Product = {title: title, price: price, description: description, image: image, category: category};
+  public addProduct(product): Observable<Product>{
+    const productIs: Product = product;
     return this.http
       .post<Product>(
         this.apiUrl,
