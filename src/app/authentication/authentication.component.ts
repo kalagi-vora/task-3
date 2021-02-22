@@ -12,9 +12,9 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class AuthenticationComponent implements OnInit,OnDestroy{
 
-  isLoginMode = true;
-  isLoading = false;
-  error: string = null;
+  public isLoginMode = true;
+  public isLoading = false;
+  public error: string = null;
   private authSubscription: Subscription;
 
   constructor(private authService : AuthService,

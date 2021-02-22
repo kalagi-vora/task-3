@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../product.model';
 
@@ -12,14 +13,15 @@ import { Product } from '../product.model';
 })
 export class AddProductComponent implements OnInit {
 
-  form : FormGroup;
+  public form : FormGroup;
   public productData : Product;
   public urlId: string;
 
   constructor(private productService: ProductService ,
               private route: ActivatedRoute,
               private router: Router ,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private notifyService : NotificationService) { }
 
   ngOnInit(): void {
     this.productData = this.productService.showData();
@@ -62,9 +64,11 @@ export class AddProductComponent implements OnInit {
       this.productService.addProduct(formData.title, formData.price, formData.description, formData.image, formData.category).subscribe(response =>{
         console.log("created record is: " +JSON.stringify(response));
       });
+      this.notifyService.showSuccess("Product added Successfully", "Yayy!!!");
     }
     else{
-      this.productService.updateProduct(formData.title, formData.price, formData.description, formData.image, formData.category, formData.id = this.productData.id).subscribe(response => {
+      formData.id = this.productData.id;
+      this.productService.updateProduct(formData).subscribe(response => {
         console.log("Updated record is: " +JSON.stringify(response));
       });
     }

@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core
 import { Subscription } from 'rxjs';
 import { Product } from '../product.model';
 import { ProductService } from '../../services/product.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../shared/notification.service';
 import { CartService } from '../../services/cart.service';
@@ -23,7 +22,6 @@ export class ProductListComponent implements OnInit,OnDestroy {
   @Output() loadingProperty = new EventEmitter<boolean>();
 
   constructor(
-    private http: HttpClient,
     private productService: ProductService,
     private router: Router,
     private notifyService:NotificationService,
@@ -70,6 +68,11 @@ export class ProductListComponent implements OnInit,OnDestroy {
         }
       })
     }
+  }
+
+  public resetPagination()
+  {
+    this.p = 1;
   }
 
   ngOnDestroy(){

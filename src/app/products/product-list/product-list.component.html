@@ -6,7 +6,7 @@
 </div>
 <div class="float-right" *ngIf="!isLoading">
   <form class="searchButton" style="margin:auto;max-width:300px">
-    <input #searchBox type="text" placeholder="Search" name="search" [(ngModel)]="searchedKeyword">
+    <input #searchBox type="text" placeholder="Search" name="search" [(ngModel)]="searchedKeyword" (input)="resetPagination()">
     <button type="button"><i class="fa fa-search"></i></button>
   </form>
 </div>

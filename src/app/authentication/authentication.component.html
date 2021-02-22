@@ -18,7 +18,7 @@
         <input type="text" id="email" class="form-control" placeholder="Email(eve.holt@reqres.in)" ngModel name="email" required email>
       </div>
       <div class="form-group">
-        <input type="text" id="password" class="form-control" placeholder="Password" ngModel name="password" required minlength="6">
+        <input type="password" id="password" class="form-control" placeholder="Password" ngModel name="password" required minlength="6">
       </div>
       <button type="submit" class="btn btn-success" [disabled]="authForm.invalid">{{isLoginMode? 'Login' : 'Sign-Up'}}</button>
       <p class="message"><a (click)="switchMode()" style="cursor: pointer;">{{isLoginMode? 'Not Registered? Sign-up' : 'Already a user? Login'}}</a></p>
