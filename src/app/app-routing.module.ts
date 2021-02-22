@@ -7,7 +7,7 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
 
   {path: '' , redirectTo : '/auth' , pathMatch: 'full'},
-  {path: 'auth' , component: AuthenticationComponent, canActivate: [LoginGuard]},
+  {path: 'auth' , component: AuthenticationComponent},
   {
     path: "products",
     loadChildren: () => import("./products/products.module").then(m => m.ProductsModule)
