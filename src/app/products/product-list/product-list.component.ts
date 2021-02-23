@@ -42,11 +42,10 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
     this.cartService.addCartItem(data).subscribe(
       item =>{
-        data= item;
-        console.log(data);
+        console.log(item);
+        this.notifyService.showInfo(`${data.title} Added to cart successfully!!`, "Yayyy");
       }
     );
-    this.notifyService.showInfo("Data Added to cart successfully!!", "Yayyy");
   }
 
   public onEdit(data: Product):void{
@@ -58,12 +57,12 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
   public onDelete(id: number): void{
     if (confirm("Are you sure,you want to delete this Product?")){
-      this.productService.deleteProduct(id).subscribe(() => {
+      this.productService.deleteProduct(id).subscribe(resp => {
         console.log(`Delete Request for id:${id} is successful`);
-
         for(let i = 0; i < this.allProducts.length; ++i){
           if (+this.allProducts[i].id === id) {
               this.allProducts.splice(i,1);
+              this.notifyService.showSuccess(`${resp.title} Deleted successfully from Cart!!`, "Success");
           }
         }
       })

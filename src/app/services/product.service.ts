@@ -52,7 +52,7 @@ export class ProductService{
     return this.updatedData;
   }
 
-  public deleteProduct(id:number): Observable<any>{
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  public deleteProduct(id:number): Observable<Product>{
+    return this.http.delete<Product>(`${this.apiUrl}/${id}`);
   }
 }
