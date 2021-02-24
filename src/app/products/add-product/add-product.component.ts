@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NotificationService } from 'src/app/shared/notification.service';
+import { NotificationService } from '../../shared/notification.service';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../product.model';
 
